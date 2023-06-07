@@ -1,0 +1,5 @@
+<p>User with ID {{user.id}} loaded.</p>
+<p>User name is {{user.name}}</p>
+<hr>
+<!-- path will be http://localhost:4200/users/10/Anna but component will not reload nd will display the old data as angular never reloads if we r on the same component withhout subscribe and params -->
+<a [routerLink]="['/users',10,'Anna']">Load Anna(10)</a>

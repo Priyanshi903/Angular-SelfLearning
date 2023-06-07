@@ -1,0 +1,45 @@
+<!-- npm list -g @angular/cli, ng version ::to check angular version,
+ng serve,
+ng new helloworld,
+npm install --save bootstrap@3  ::then add path in angular.json in styles as "node_modules/bootstrap/dist/css/bootstrap.min.css",
+strict: false in tsconfig.json to disable strict mode,
+-->
+
+
+<!-- checking bootstrap -->
+<!-- <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+    <button type="button" class="btn btn-danger">Left</button>
+    <button type="button" class="btn btn-warning">Middle</button>
+    <button type="button" class="btn btn-success">Right</button>
+</div> -->
+
+
+<!-- checking springboot and angular integration -->
+<table>
+  <tr *ngFor="let p of products">
+    <td>{{p.product_name}}</td>
+  </tr>
+</table>
+
+<h1>I m App component</h1>
+
+<app-servers></app-servers>
+
+<!-- selector as attribute:-
+<div app-servers></div> -->
+
+<!-- selector as class:-
+<div class="app-servers"></div> -->
+
+<!-- select by id, hover not supported by angular -->
+
+<!-- DATABINDING::::->
+
+typescript code(business logic) -----:>> Template(HTML)
+i)String Interpolation( {{data}} )
+ii)Property Binding( [property]="data" )
+
+Template(HTML) -------:>> typescript code(business logic)
+Event Binding( (event)="expression" )
+
+combination of both:two-way-binding( [(ngModel)]="data" ) -->

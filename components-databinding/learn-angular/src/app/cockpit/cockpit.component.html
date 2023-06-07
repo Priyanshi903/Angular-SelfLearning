@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-xs-12">
+    <p>Add new Servers or blueprints!</p>
+    <label for="">Server Name</label>
+    <input type="text" class="form-control" [(ngModel)]="newServerName">
+    <label for="">Server content</label>
+    <input type="text" class="form-control" [(ngModel)]="newServerContent">
+    <br>
+    <button class="btn btn-primary " (click)="onAddServer()">Add Server</button>
+    <button class="btn btn-primary" (click)="onAddBlueprint()">Add Server Blueprint</button>
+  </div>
+</div>
+
+<hr>
+
+<!-- local reference in templates -->
+<input type="text" #ref>
+<button (click)="locaRef(ref)">Local Ref</button>
+<p>{{ref.value}}</p>
+<!-- o/p: priya -->
+
+<hr>
+
+<!-- getting access to the template using @viewchild -->
+<input type="text" #viewchild>
+<button (click)="viewChildFunc(viewchild)">View Child</button>
+<p>{{viewchild.value}}</p>

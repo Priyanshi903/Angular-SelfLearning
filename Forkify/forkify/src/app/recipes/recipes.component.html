@@ -1,0 +1,18 @@
+<!-- ng g c recipes/recipe-list,,,,,,,,,,ng g c recipes/recipe-list/recipe-item  -->
+<div class="row">
+  <div class="col-md-5">
+    <!-- <app-recipe-list (recipeWasSelected)="selectedRecipe=$event"></app-recipe-list> -->
+    <app-recipe-list></app-recipe-list>
+  </div>
+  <div class="col-md-7">
+
+    <!-- [recipe] sent to recipe-detail and used by recipe-detail -->
+    <!-- <app-recipe-detail *ngIf="selectedRecipe; else nothingSelected" [recipe]="selectedRecipe"></app-recipe-detail>
+    <ng-template #nothingSelected>
+      <p>Please select a Recipe!</p>
+    </ng-template> -->
+
+    <router-outlet></router-outlet>
+
+  </div>
+</div>

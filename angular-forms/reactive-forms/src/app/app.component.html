@@ -1,0 +1,49 @@
+<!-- import ReactiveFormsModule in app.module.ts -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <!-- nested form -->
+        <div formGroupName="userData">
+          <!-- adding required etc will not work here as we r not configuring form here -->
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" class="form-control" formControlName="username">
+            <span class="help-block"
+              *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched">
+              <span *ngIf="signupForm.get('userData.username').errors['nameIsForbidden']">This name is Forbidden!</span>
+              <span *ngIf="signupForm.get('userData.username').errors['required']">This field can't be left
+                empty!</span>
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" id="email" class="form-control" formControlName="email">
+            <span class="help-block"
+              *ngIf="!signupForm.get('userData.email').valid && signupForm.get('userData.email').touched">Please
+              enter valid email !</span>
+          </div>
+        </div>
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input type="radio" [value]="gender" formControlName="gender">{{ gender }}
+          </label>
+        </div>
+        <!-- arrays of form controls -->
+        <div formArrayName='hobbies'>
+          <h4>Your Hobbies:</h4>
+          <button class="btn btn-default" type="button" (click)="onAddHobby()">Add Hobby</button>
+          <div class="form-group" *ngFor="let hobbyControl of getControls();let i=index">
+            <input type="text" class="form-control" [formControlName]="i">
+          </div>
+        </div>
+        <span class="help-block" *ngIf="!signupForm.valid && signupForm.touched">Form is invalid !</span>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="container">
+  <app-assignment-reactive></app-assignment-reactive>
+</div>

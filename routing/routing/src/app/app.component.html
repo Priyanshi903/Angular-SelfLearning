@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <ul class="nav nav-tabs">
+
+        <!-- [routerLinkActiveOptions]="{exact:true}" is added to set active only when exact path matches otherwise it will be active for users & servers too as it is a part of their paths(/) -->
+        <li role="presentation"><a routerLink="/" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact:true}">Home</a></li>
+
+        <!-- following type of adding link will reload the page -->
+        <!-- <li role="presentation"><a href="/servers">Servers</a></li> -->
+
+        <li role="presentation"><a routerLink="/servers" routerLinkActive="active">Servers</a></li>
+
+        <li role="presentation"><a [routerLink]="['/users']" routerLinkActive="active">Users</a></li>
+
+        <!-- this is the relative path, it appends the path to the end of the current path -->
+        <!-- this will also work but on reloading it becomes localhost:4200/path/path eg. in servers comp-->
+        <!-- <li role="presentation"><a [routerLink]="['users']">Users</a></li> -->
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <!-- <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <app-users></app-users>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <app-servers></app-servers>
+    </div>
+  </div> -->
+
+</div>

@@ -1,0 +1,67 @@
+<!-- You can pass values from a parent to a child using [property binding] in the parent and @Input() in the child.
+You can pass values from a child to a parent using (event binding) in the parent and @Output() in the child. -->
+
+
+<div class="container">
+
+  <!-- bluprintCreated is alias name -->
+
+  <app-cockpit (serverCreated)="onServerAdded($event)" (bluprintCreated)="onBlueprintAdded($event)"></app-cockpit>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+
+      <!-- ngOnChange hook -->
+      <button class="btn btn-success" (click)="onChangeFirst()">Change first element</button>
+
+      <button class="btn btn-danger" (click)="onDestroyFirst()">Destroy first component</button>
+      <hr>
+
+      <!-- <app-server-element *ngFor="let serverElement of serverElements" [element]="serverElement"></app-server-element> -->
+
+      <!-- Binding through the alias -->
+      <!-- <app-server-element *ngFor="let serverElement of serverElements" [srvElement]="serverElement">
+      </app-server-element> -->
+
+
+      <!-- projecting content into Components through the ng-content -->
+      <!-- getting access to ng-content with @ContentChild (#contentParagraph) -->
+      <app-server-element *ngFor="let serverElement of serverElements" [srvElement]="serverElement"
+        [name]="serverElement.name">
+        <p #contentParagraph>
+          <strong *ngIf="serverElement.type==='server'" style="color: red;">{{serverElement.content}}</strong>
+          <em *ngIf="serverElement.type==='blueprint'">{{serverElement.content}}</em>
+        </p>
+      </app-server-element>
+    </div>
+  </div>
+</div>
+
+<!-- LIFECYCLE HOOKS -->
+<!-- A component instance has a lifecycle that starts when Angular instantiates the component class and renders the component view along with its child views. The lifecycle continues with change detection, as Angular checks to see when data-bound properties change, and updates both the view and the component instance as needed.
+The lifecycle ends when Angular destroys the component instance and removes its rendered template from the DOM.
+Your application can use lifecycle hook methods to tap into key events in the lifecycle of a component or directive to initialize new instances, initiate change detection when needed, respond to updates during change detection, and clean up before deletion of instances.
+
+1.ngOnChanges: called after a bound input property changes.Called before ngOnInit().For @Input properties only.
+2.ngOnInit: called once the component is initialized.Called once, after the first ngOnChanges().
+3.ngDoCheck: called during every change detection run.Called immediately after ngOnChanges() on every change detection
+run, and immediately after ngOnInit() on the first run.
+4.ngAfterContentInit: called after content (ng-content) is projected in a view.
+5.ngAfterContentChecked: called everytime the projected content has been checked.
+6.ngAfterViewInit: called after the component's view(and child views) has been initialized.
+7.ngAfterViewChecked: called after the component's view(and child views) have been checked.
+8.ngOnDestroy: called once the component is about to be destroyed. -->
+
+<hr>
+<h3>Assignment:-----------</h3>
+<div class="row">
+  <div class="col-xs-12">
+    <app-game-component (intervalFired)="onIntervalfired($event)"></app-game-component>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <app-odd *ngFor="let oddNumber of oddNumbers" [numbber]="oddNumber"></app-odd>
+    <app-even *ngFor="let evenNumber of evenNumbers" [numbber]="evenNumber"></app-even>
+  </div>
+</div>

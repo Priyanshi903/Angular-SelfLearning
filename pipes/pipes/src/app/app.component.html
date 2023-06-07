@@ -1,0 +1,23 @@
+<!-- Use pipes to transform strings, currency amounts, dates, and other data for display.
+Pipes are simple functions to use in template expressions to accept an input value and return a transformed value.
+Pipes are useful because you can use them throughout your application, while only declaring each pipe once.  -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <input type="text" [(ngModel)]="filteredStatus">
+      <hr>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let server of servers | filter:filteredStatus:'status'"
+          [ngClass]="getStatusClasses(server)">
+          <span class="badge">
+            {{ server.status }}
+          </span>
+          <!-- order(L to R) matters, {{ server.started | uppercase | date:'fullDate'}} will give error as it is date originally not string-->
+          <strong>{{ server.name | shorten:15 }}</strong> | {{ server.instanceType | uppercase}} |
+          {{ server.started |date:'fullDate' | uppercase }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

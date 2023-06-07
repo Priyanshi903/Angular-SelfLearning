@@ -1,0 +1,29 @@
+<!-- Observables: Various data sources for eg.(User Input) Events , Http requests,Triggered in code,etc. -->
+<!-- install RxJS:
+1. npm install --save rxjs@6
+2. npm install --save rxjs-compat (rxjs-compat package)-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <a routerLink="/">Home</a> |
+      <a [routerLink]="['user', 1]">
+        User 1
+      </a>
+      |
+      <a [routerLink]="['user', 2]">
+        User 2
+      </a>
+    </div>
+  </div>
+  <hr />
+  <!-- Subject -->
+  <p *ngIf="userActivated">Activated!</p>
+  <hr />
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <!-- frst app.component loaded , therefore '' route comes inside app.comp -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

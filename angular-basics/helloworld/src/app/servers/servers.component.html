@@ -1,0 +1,64 @@
+<p>I'm Servers component</p>
+<!-- property Binding( [disabled] ) &  Event binding( (click) )-->
+<button class="btn btn-primary" [disabled]="!allowNewServer" (click)=" onCreateServer() ">Add Server</button>
+<p>{{serverCreationStatus}}</p>
+<!-- angular doesn't have any event like onclick -->
+
+<!-- through string interpolation:
+<p>{{allowNewServer}}</p>
+
+through property binding:
+<p [innerText]="allowNewServer"></p> -->
+
+<!-- passing and using data with event binding -->
+<input type="text" class="form-control" (input)="onUpdateServerName($event)">
+<p>{{serverName}}</p>
+
+<!-- two way data binding -->
+<!-- ngModel needs FormsModule(frm @angular/forms) that needs to be added to imports[] array in app.module.ts -->
+<input type="text" class="form-control" [(ngModel)]="serverName">
+<p>{{serverName}}</p>
+
+Assignment
+-------------------------------------------------------------------------------------------------------------
+<hr>
+<label for="userName">User Name</label>
+<input type="text" class="form-control" [(ngModel)]="userName">
+<p>{{userName}}</p>
+<button class="btn btn-primary" [disabled]="userName===''" (click)="userName=''">Reset Name</button>
+
+<!-- DIRECTIVES -->
+<!-- Directives are the instructions in the DOM.
+Directives are classes that add new behavior or modify the existing behavior to the elements in the template.
+Basically directives are used to manipulate the DOM, for example adding/removing the element from DOM or changing the
+appearance of the DOM elements.
+
+Types of directives:-
+1.Component directive(They are the directive with a template)
+2.Structural directive(used to change the DOM layout by adding and removing DOM elements.eg.ngIf, ngFor, ngSwitch)
+3.Attribute directive(used to change the appearance or behavior of an element.eg.ngStyle, ngClass, ngModel)
+
+To create a custom directive we have to replace @Component decorator with @Directive decorator. -->
+
+<p *ngIf="serverCreated; else noServer">Server created , server name is {{serverName}}</p>
+<ng-template #noServer>
+  <p>No server created </p>
+</ng-template>
+
+<app-server *ngFor="let server of servers"></app-server>
+
+<p>
+  Assignment-------------------------------------------------------------------------------------------------------------------------------
+</p>
+<button class="btn btn-success" (click)="toggleFunc()">Toggle</button>
+<p *ngIf="toggle">Google LLC is an American multinational technology company that focuses on artificial intelligence,
+  search engine
+  technology, online advertising, cloud computing, computer software, quantum computing, e-commerce, and consumer
+  electronics.</p>
+<p *ngFor="let n of noOfToggles" [ngStyle]="{backgroundColor:n>4?'blue':'transparent'}" [ngClass]="{toggleColor:n>4}">
+  {{n}}</p>
+
+<!-- index is kind of reserve keyword -->
+<p *ngFor="let t of logTimeStamp;let i = index" [ngStyle]="{backgroundColor:i>3?'blue':'transparent'}"
+  [ngClass]="{toggleColor:i>3}">
+  {{t}}</p>

@@ -1,0 +1,5 @@
+/* if only .ng-invalid then it will get applied to the whole form
+following classes added by angular to the fields*/
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
